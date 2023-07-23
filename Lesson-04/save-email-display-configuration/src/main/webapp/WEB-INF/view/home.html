@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/edit}" th:object="${email}">
+    <div th:field="*{language}" th:text="*{language}"></div>
+    <div th:field="*{pageSize}" th:text="*{pageSize}"></div>
+    <div th:field="*{spamFilter}" th:text="*{spamFilter}"></div>
+    <div th:field="*{signature}" th:text="*{signature}"></div>
+    <button>Update</button>
+</form>
+</body>
+</html>

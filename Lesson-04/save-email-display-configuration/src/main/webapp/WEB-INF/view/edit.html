@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/update}" th:object="${email}">
+    <p>Languages:</p>
+    <select th:field="*{language}" name="languages" id="">
+        <option th:value="English" th:text="English"></option>
+        <option th:value="Vietnamese" th:text="Vietnamese"></option>
+        <option th:value="Japanese" th:text="Japanese"></option>
+        <option th:value="Chinese" th:text="Chinese"></option>
+    </select> <br>
+    <p>Page Size:</p>
+    <p>Show</p>
+    <select th:field="*{pageSize}" name="pageSize">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+    </select>
+    <p>emails per page</p> <br>
+    <p>Spams filter:</p>
+    <input type="checkbox" id="filter" name="spamFilter" value="Enable"> Enable spam filter <br>
+    <p>Signature</p>
+    <textarea th:field="*{signature}" rows="10"></textarea> <br>
+    <button>Confirm Update</button>
+</form>
+<script>
+    let filter = document.getElementById("filter");
+    filter.addEventListener("change", function() {
+        if (filter.checked) {
+            filter.value = "Enable";
+        } else {
+            filter.value = "Disable";
+        }
+    });
+</script>
+</body>
+</html>

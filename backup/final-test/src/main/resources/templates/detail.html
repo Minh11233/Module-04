@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        td:first-child {
+            font-weight: bold;
+            width: 120px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<form th:object="${city}">
+    <table>
+        <tr>
+            <td>Tên:</td>
+            <td><div th:text="${city.cityName}"></div></td>
+        </tr>
+        <tr>
+            <td>Quốc gia:</td>
+            <td><div th:text="${city.country.country}"></div></td>
+        </tr>
+        <tr>
+            <td>Diện tích:</td>
+            <td>
+                <div th:text="${city.acreage}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Dân số:</td>
+            <td><div th:text="${city.population}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>GDP:</td>
+            <td> <div th:text="${city.GDP}"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Giới thiệu:</td>
+            <td>    <div th:text="*{description}"></div>
+            </td>
+        </tr>
+    </table>
+
+    <a th:href="@{/edit-city/__${city.id}__}">Chỉnh sửa</a> |
+    <a th:href="@{/delete-city/__${city.id}__}" href="">Xoá</a>
+</form>
+</body>
+</html>
